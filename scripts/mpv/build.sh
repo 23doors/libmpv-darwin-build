@@ -105,7 +105,7 @@ meson setup build \
     -Dvector=disabled `# GCC vector instructions` \
     -Dwin32-internal-pthreads=disabled `#internal pthread wrapper for win32 (Vista+)` \
     -Dzimg=disabled `# libzimg support (high quality software scaler)` \
-    -Dzlib=disabled `# zlib` \
+    -Dzlib=enabled `# zlib` \
     \
     `# audio output features` \
     -Dalsa=disabled `# ALSA audio output` \

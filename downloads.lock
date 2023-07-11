@@ -1,27 +1,27 @@
 ffmpeg:
-  version: 5.1.2
-  url: https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz
-  sha256: 619e706d662c8420859832ddc259cd4d4096a48a2ce1eefd052db9e440eef3dc
+  version: "6.0"
+  url: https://ffmpeg.org/releases/ffmpeg-6.0.tar.xz
+  sha256: 57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082
 freetype:
-  version: 2.13.0
-  url: https://downloads.sourceforge.net/project/freetype/freetype2/2.13.0/freetype-2.13.0.tar.xz
-  sha256: 5ee23abd047636c24b2d43c6625dcafc66661d1aca64dec9e0d05df29592624c
+  version: 2.13.1
+  url: https://downloads.sourceforge.net/project/freetype/freetype2/2.13.1/freetype-2.13.1.tar.xz
+  sha256: ea67e3b019b1104d1667aa274f5dc307d8cbd606b399bc32df308a77f1a564bf
 fribidi:
-  version: 1.0.12
-  url: https://github.com/fribidi/fribidi/releases/download/v1.0.12/fribidi-1.0.12.tar.xz
-  sha256: 0cd233f97fc8c67bb3ac27ce8440def5d3ffacf516765b91c2cc654498293495
+  version: 1.0.13
+  url: https://github.com/fribidi/fribidi/releases/download/v1.0.13/fribidi-1.0.13.tar.xz
+  sha256: 7fa16c80c81bd622f7b198d31356da139cc318a63fc7761217af4130903f54a2
 harfbuzz:
-  version: 7.1.0
-  url: https://github.com/harfbuzz/harfbuzz/archive/7.1.0.tar.gz
-  sha256: 6c7a358c6e134bd6da4fe39f59ec273ff0ee461697945027b7538287b8c73b1e
+  version: 7.3.0
+  url: https://github.com/harfbuzz/harfbuzz/archive/7.3.0.tar.gz
+  sha256: 7cefc6cc161e9d5c88210dafc43bc733ca3e383fd3dd4f1e6178f81bd41cfaae
 libass:
   version: 0.17.1
   url: https://github.com/libass/libass/releases/download/0.17.1/libass-0.17.1.tar.xz
   sha256: f0da0bbfba476c16ae3e1cfd862256d30915911f7abaa1b16ce62ee653192784
 libressl:
-  version: 3.6.2
-  url: https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.6.2.tar.gz
-  sha256: 4be80fff073746cf50b4a8e5babe2795acae98c6b132a9e02519b445dfbfd033
+  version: 3.7.3
+  url: https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.7.3.tar.gz
+  sha256: 7948c856a90c825bd7268b6f85674a8dcd254bae42e221781b24e3f8dc335db3
 mpv:
   version: 0.35.1
   url: https://github.com/mpv-player/mpv/archive/refs/tags/v0.35.1.tar.gz
@@ -34,4 +34,3 @@ uchardet:
   version: 0.0.8
   url: https://www.freedesktop.org/software/uchardet/releases/uchardet-0.0.8.tar.xz
   sha256: e97a60cfc00a1c147a674b097bb1422abd9fa78a2d9ce3f3fdcc2e78a34ac5f0
-
