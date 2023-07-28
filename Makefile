@@ -7,7 +7,7 @@ MAKEFLAGS += "-j -l $(shell sysctl -n hw.ncpu) "
 HOST_OS = macos
 ifeq ($(shell uname -m), x86_64)
     HOST_ARCH = amd64
-else ifeq ($(shell uname -m), aarch64)
+else ifeq ($(shell uname -m), arm64)
     HOST_ARCH = arm64
 else
     $(error "Invalid host arch: Your host arch must be amd64 or arm64")
@@ -112,7 +112,7 @@ ${INTERMEDIATE_DIR}/pkg-config_%: \
 		ARCHIVE_FILE=${ARCHIVE_FILE} \
 		TARGET_DIR=${TARGET_SRC_DIR} \
 		sh ${PROJECT_DIR}/scripts/extract/build.sh
-	
+
 	env -i \
 		PATH=${SANDBOX_PATH} \
 		PROJECT_DIR=${PROJECT_DIR} \
