@@ -68,12 +68,6 @@ video_common_options = [
     '--enable-neon', # improve hevc (h265) support on arm
     '--enable-libxml2', # dash support
     '--enable-videotoolbox',
-
-    # TODO: check if required
-    # '--enable-avfoundation',
-    # '--enable-iconv',
-    # '--enable-metal',
-    # '--enable-bzlib',
 ]
 
 # https://github.com/media-kit/libmpv-android-audio-build/blob/main/buildscripts/variants/default.sh
@@ -250,9 +244,18 @@ video_default_options = [
     '--enable-demuxer=subviewer',
     '--enable-demuxer=subviewer1',
     '--enable-demuxer=vplayer',
+
+    # hwaccels
+    '--enable-hwaccel=h263_videotoolbox',
+    '--enable-hwaccel=h264_videotoolbox',
+    '--enable-hwaccel=hevc_videotoolbox',
+    '--enable-hwaccel=mpeg1_videotoolbox',
+    '--enable-hwaccel=mpeg2_videotoolbox',
+    '--enable-hwaccel=mpeg4_videotoolbox',
+    '--enable-hwaccel=vp9_videotoolbox',
 ]
 
-full_options = [
+audio_full_options = [
     '--enable-decoders',
     '--enable-hwaccels',
     '--enable-parsers',
@@ -263,6 +266,16 @@ full_options = [
     # filters
     '--enable-filter=overlay',
     '--enable-filter=equalizer',
+
+    # TODO: `media_kit` checks the presence of the h264 decoder to determine if
+    # `ffmpeg` is an audio or video variant, so we disable it for the audio
+    # variant.
+    # Ideally, we should only enable the audio decoders…
+    '--disable-decoder=h264',
+]
+
+video_full_options = [
+    '--enable-decoder=h264',
 ]
 
 # disable all option
@@ -282,7 +295,10 @@ if flavor == 'default'
         options += video_default_options
     endif
 elif flavor == 'full'
-    options += full_options
+    options += audio_full_options
+    if variant == 'video'
+        options += video_full_options
+    endif
 endif
 
 p = mod.add_project('configure',
