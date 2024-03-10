@@ -226,7 +226,7 @@ ${INTERMEDIATE_DIR}/pkg-config_%: \
 		sh ${PROJECT_DIR}/scripts/extract/build.sh
 
 	env -i \
-		PATH=${SANDBOX_PATH} \
+		PATH=/Users/V/.asdf/installs/clang/14.0.3/bin:${SANDBOX_PATH} \
 		PROJECT_DIR=${PROJECT_DIR} \
 		OS=${TARGET_OS} \
 		ARCH=${TARGET_ARCH} \
@@ -582,7 +582,7 @@ ${INTERMEDIATE_DIR}/libplacebo_%: \
 	mkdir -p ${TARGET_TMP_DIR}
 
 	mkdir -p ${TARGET_SRC_DIR}
-	git clone -b v6.338.2 --single-branch git@github.com:haasn/libplacebo.git ${TARGET_SRC_DIR}
+	git clone -b v6.338.2 --single-branch https://github.com/haasn/libplacebo.git ${TARGET_SRC_DIR}
 	# env -i \
 	# 	PATH=${SANDBOX_PATH} \
 	# 	ARCHIVE_FILE=${ARCHIVE_FILE} \
