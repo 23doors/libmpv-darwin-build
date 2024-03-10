@@ -93,7 +93,7 @@ jobs:
           # make build/output/libmpv-xcframeworks_${VERSION}_macos-universal-video-default.tar.gz
           make build/output/libmpv-xcframeworks_${VERSION}_macos-universal-video-full.tar.gz
           # make build/output/libmpv-xcframeworks_${VERSION}_macos-universal-video-encodersgpl.tar.gz
-          make build/output/debug.zip
+          # make build/output/debug.zip
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
