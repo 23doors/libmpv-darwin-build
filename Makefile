@@ -148,7 +148,7 @@ ${OUTPUT_DIR}/debug.zip: \
 		DEPS="${TARGET_ABS_DEPS}" \
 		OUTPUT_FILE=${TARGET_OUTPUT_FILE} \
 		sh ${PROJECT_DIR}/scripts/${TARGET_PKGNAME}/build.sh
-	
+
 	mv ${TARGET_OUTPUT_FILE} ${TARGET_FILE}
 	rm -rf ${TARGET_TMP_DIR}
 
@@ -224,7 +224,7 @@ ${INTERMEDIATE_DIR}/pkg-config_%: \
 		ARCHIVE_FILE=${ARCHIVE_FILE} \
 		TARGET_DIR=${TARGET_SRC_DIR} \
 		sh ${PROJECT_DIR}/scripts/extract/build.sh
-	
+
 	env -i \
 		PATH=${SANDBOX_PATH} \
 		PROJECT_DIR=${PROJECT_DIR} \
@@ -552,6 +552,55 @@ ${INTERMEDIATE_DIR}/freetype_%: \
 
 	rm -rf ${TARGET_TMP_DIR}
 
+# libplacebo<os>-<arch>
+${INTERMEDIATE_DIR}/libplacebo_%: \
+	${DOWNLOADS_DIR} \
+	${PKGCONFIG_DIR}
+
+	$(eval TARGET_DIR=$@)
+	$(eval TARGET_PATTERN=$*)
+	$(eval TARGET_DEPS=$+)
+	$(eval TARGET_NAME=$(notdir ${TARGET_DIR}))
+	$(eval TARGET_PKGNAME=$(firstword $(subst _${TARGET_PATTERN}, ,${TARGET_NAME})))
+	$(eval TARGET_TMP_DIR=${TMP_DIR}/${TARGET_NAME})
+	$(eval TARGET_SRC_DIR=${TARGET_TMP_DIR}/src/${TARGET_PKGNAME})
+	$(eval TARGET_OUTPUT_DIR=${PROJECT_DIR}/${TARGET_DIR})
+
+	$(eval ARCHIVE_FILE=$(firstword $(wildcard ${DOWNLOADS_DIR}/${TARGET_PKGNAME}-*.tar.*)))
+
+	$(eval TARGET_OS=$(word 1, $(subst -, ,${TARGET_PATTERN})))
+	$(eval TARGET_ARCH=$(word 2, $(subst -, ,${TARGET_PATTERN})))
+
+	$(eval TARGET_PKGS_DEPS=$(foreach DEP,${TARGET_DEPS}, \
+		$(if $(findstring downloads,${DEP}),, \
+			$(if $(findstring pkg-config,${DEP}),, \
+				${DEP}))))
+	$(eval PKG_CONFIG_PATH_LIST=$(foreach DEP,${TARGET_PKGS_DEPS},${PROJECT_DIR}/${DEP}/lib/pkgconfig))
+	$(eval PKG_CONFIG_PATH=$(subst ${SPACE},${COLON},${PKG_CONFIG_PATH_LIST}))
+
+	rm -rf ${TARGET_TMP_DIR} ${TARGET_DIR}
+	mkdir -p ${TARGET_TMP_DIR}
+
+	mkdir -p ${TARGET_SRC_DIR}
+	git clone -b v6.338.2 --single-branch git@github.com:haasn/libplacebo.git ${TARGET_SRC_DIR}
+	# env -i \
+	# 	PATH=${SANDBOX_PATH} \
+	# 	ARCHIVE_FILE=${ARCHIVE_FILE} \
+	# 	TARGET_DIR=${TARGET_SRC_DIR} \
+	# 	sh ${PROJECT_DIR}/scripts/extract/build.sh
+
+	env -i \
+		PATH=${SANDBOX_PATH} \
+		PROJECT_DIR=${PROJECT_DIR} \
+		PKG_CONFIG_PATH=${PKG_CONFIG_PATH} \
+		OS=${TARGET_OS} \
+		ARCH=${TARGET_ARCH} \
+		SRC_DIR=${TARGET_SRC_DIR} \
+		OUTPUT_DIR=${TARGET_OUTPUT_DIR} \
+		sh ${PROJECT_DIR}/scripts/${TARGET_PKGNAME}/build.sh
+
+	rm -rf ${TARGET_TMP_DIR}
+
 # libass_<os>-<arch>
 ${INTERMEDIATE_DIR}/libass_%: \
 	${DOWNLOADS_DIR} \
@@ -660,6 +709,7 @@ ${INTERMEDIATE_DIR}/mpv_%: \
 		${INTERMEDIATE_DIR}/harfbuzz_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 		${INTERMEDIATE_DIR}/fribidi_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 		${INTERMEDIATE_DIR}/freetype_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
+		${INTERMEDIATE_DIR}/libplacebo_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 	)
 
 	@echo "\033[32mRULE\033[0m $@"
@@ -673,7 +723,7 @@ ${INTERMEDIATE_DIR}/mpv_%: \
 	$(eval TARGET_SRC_DIR=${TARGET_TMP_DIR}/src/${TARGET_PKGNAME})
 	$(eval TARGET_OUTPUT_DIR=${PROJECT_DIR}/${TARGET_DIR})
 
-	$(eval ARCHIVE_FILE=$(firstword $(wildcard ${DOWNLOADS_DIR}/${TARGET_PKGNAME}-*.tar.*)))
+	$(eval ARCHIVE_FILE=$(firstword $(wildcard ${DOWNLOADS_DIR}/${TARGET_PKGNAME}-*)))
 
 	$(eval TARGET_OS=$(word 1, $(subst -, ,${TARGET_PATTERN})))
 	$(eval TARGET_ARCH=$(word 2, $(subst -, ,${TARGET_PATTERN})))
@@ -983,6 +1033,7 @@ ${INTERMEDIATE_DIR}/libs-arch_%: \
 		${INTERMEDIATE_DIR}/harfbuzz_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 		${INTERMEDIATE_DIR}/fribidi_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 		${INTERMEDIATE_DIR}/freetype_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
+		${INTERMEDIATE_DIR}/libplacebo_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 		$$(if $$(filter encodersgpl, $$(word 4,$$(subst -, ,$$*))), \
 			${INTERMEDIATE_DIR}/libvpx_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 			${INTERMEDIATE_DIR}/libx264_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
@@ -1173,6 +1224,23 @@ ${OUTPUT_DIR}/libmpv-%.tar.gz: \
 
 	mv ${TARGET_OUTPUT_FILE} ${TARGET_FILE}
 	rm -rf ${TARGET_TMP_DIR}
+
+.PHONY: update-downloads-lock
+update-downloads-lock:
+	$(eval DEPS= \
+		pkg-config \
+		mpv \
+		uchardet \
+		libass \
+		freetype \
+		harfbuzz \
+		fribidi \
+		ffmpeg \
+		libxml2 \
+		dav1d \
+	)
+
+	go run cmd/update-downloads-lock/main.go ${DEPS} > downloads.lock
 
 .PHONY: tool-versions
 tool-versions:

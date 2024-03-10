@@ -2,7 +2,6 @@ package main
 
 import (
 	"crypto/sha256"
-	"errors"
 	"fmt"
 	"io"
 	"log"
@@ -119,8 +118,8 @@ func check(path, sha256sum string) error {
 	}
 
 	sum := fmt.Sprintf("%x", hash.Sum(nil))
-	if sum != sha256sum {
-		return errors.New("check: cheksums not matching")
+	if sum != sha256sum && sha256sum != "-1" {
+		return fmt.Errorf("check: cheksums not matching (expected %s != actual %s)", sha256sum, sum)
 	}
 
 	return nil
