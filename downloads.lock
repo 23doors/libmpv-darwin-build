@@ -1,11 +1,11 @@
 dav1d:
-  version: 1.2.1
-  url: https://code.videolan.org/videolan/dav1d/-/archive/1.2.1/dav1d-1.2.1.tar.bz2
-  sha256: a4003623cdc0109dec3aac8435520aa3fb12c4d69454fa227f2658cdb6dab5fa
+  version: 1.4.0
+  url: https://code.videolan.org/videolan/dav1d/-/archive/1.4.0/dav1d-1.4.0.tar.bz2
+  sha256: 7661648c95755db3d61857b3fdc427fa6d3271a573e84fd11c235441965e9397
 ffmpeg:
-  version: "6.0"
-  url: https://ffmpeg.org/releases/ffmpeg-6.0.tar.xz
-  sha256: 57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082
+  version: 6.1.1
+  url: https://ffmpeg.org/releases/ffmpeg-6.1.1.tar.xz
+  sha256: 8684f4b00f94b85461884c3719382f1261f0d9eb3d59640a1f4ac0873616f968
 fftools-ffi:
   version: "106d5813"
   url: https://github.com/moffatman/fftools-ffi/archive/106d58138071eba66c7d814f6573029c712cd597.tar.gz
@@ -19,9 +19,9 @@ fribidi:
   url: https://github.com/fribidi/fribidi/releases/download/v1.0.13/fribidi-1.0.13.tar.xz
   sha256: 7fa16c80c81bd622f7b198d31356da139cc318a63fc7761217af4130903f54a2
 harfbuzz:
-  version: 8.1.1
-  url: https://github.com/harfbuzz/harfbuzz/archive/8.1.1.tar.gz
-  sha256: b16e6bc0fc7e6a218583f40c7d201771f2e3072f85ef6e9217b36c1dc6b2aa25
+  version: 8.3.0
+  url: https://github.com/harfbuzz/harfbuzz/archive/refs/tags/8.3.0.tar.gz
+  sha256: 6a093165442348d99f3307480ea87ed83bdabaf642cdd9548cff6b329e93bfac
 libass:
   version: 0.17.1
   url: https://github.com/libass/libass/releases/download/0.17.1/libass-0.17.1.tar.xz
@@ -43,17 +43,17 @@ libx264:
   url: https://code.videolan.org/videolan/x264/-/archive/a8b68ebfaa68621b5ac8907610d3335971839d52/libx264-a8b68ebfaa68621b5ac8907610d3335971839d52.tar.gz
   sha256: 164688b63f11a6e4f6d945057fc5c57d5eefb97973d0029fb0303744e10839ff
 libxml2:
-  version: 2.11.5
-  url: https://download.gnome.org/sources/libxml2/2.11/libxml2-2.11.5.tar.xz
-  sha256: 3727b078c360ec69fa869de14bd6f75d7ee8d36987b071e6928d4720a28df3a6
+  version: 2.12.5
+  url: https://download.gnome.org/sources/libxml2/2.12/libxml2-2.12.5.tar.xz
+  sha256: a972796696afd38073e0f59c283c3a2f5a560b5268b4babc391b286166526b21
 mbedtls:
-  version: 3.4.1
-  url: https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/v3.4.1.tar.gz
-  sha256: a420fcf7103e54e775c383e3751729b8fb2dcd087f6165befd13f28315f754f5
+  version: 3.5.2
+  url: https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/v3.5.2.tar.gz
+  sha256: 35890edf1a2c7a7e29eac3118d43302c3e1173e0df0ebaf5db56126dabe5bb05
 mpv:
-  version: 0.36.0
-  url: https://github.com/mpv-player/mpv/archive/refs/tags/v0.36.0.tar.gz
-  sha256: 29abc44f8ebee013bb2f9fe14d80b30db19b534c679056e4851ceadf5a5e8bf6
+  version: 0.37.0
+  url: https://github.com/mpv-player/mpv/archive/refs/tags/v0.37.0.tar.gz
+  sha256: 1d2d4adbaf048a2fa6ee134575032c4b2dad9a7efafd5b3e69b88db935afaddf
 pkg-config:
   version: 0.29.2
   url: https://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz
@@ -62,3 +62,4 @@ uchardet:
   version: 0.0.8
   url: https://www.freedesktop.org/software/uchardet/releases/uchardet-0.0.8.tar.xz
   sha256: e97a60cfc00a1c147a674b097bb1422abd9fa78a2d9ce3f3fdcc2e78a34ac5f0
+
