@@ -15,6 +15,8 @@ p = mod.add_project('configure',
         '--without-gnu-ld',
         '--with-internal-glib',
         '--without-gcov',
+        # clang 15 has an error about int-conversion, treat it as warning
+        'CFLAGS=-Wno-error=int-conversion',
     ],
     verbose: true,
 )

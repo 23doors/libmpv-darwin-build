@@ -226,7 +226,7 @@ ${INTERMEDIATE_DIR}/pkg-config_%: \
 		sh ${PROJECT_DIR}/scripts/extract/build.sh
 
 	env -i \
-		PATH=/Users/V/.asdf/installs/clang/14.0.3/bin:${SANDBOX_PATH} \
+		PATH=${SANDBOX_PATH} \
 		PROJECT_DIR=${PROJECT_DIR} \
 		OS=${TARGET_OS} \
 		ARCH=${TARGET_ARCH} \
