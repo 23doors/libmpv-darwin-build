@@ -5,6 +5,7 @@ set -u # treat unset variables as an error
 
 cd ${SRC_DIR}
 
+patch -p1 <${PROJECT_DIR}/patches/mpv-ios-build.patch
 if [ "${VARIANT}" == "audio" ]; then
     patch -p1 <${PROJECT_DIR}/patches/mpv-remove-libass.patch
 fi
@@ -131,6 +132,9 @@ COMMON_OPTIONS=(
 
     `# misc features`
     -Diconv=enabled `# iconv`
+
+    `# disable avfoundation`
+    -Davfoundation=disabled `# AVFoundation audio output`
 )
 
 COMMON_VIDEO_OPTIONS=(
@@ -149,6 +153,7 @@ MACOS_OPTIONS=(
 
     `# video output features`
     -Dcocoa=enabled `# Cocoa` `# BUG: required in audio mode since v0.36.0`
+    -Dswift-build=enabled `# Swift - required for cocoa apphub since v0.38.0`
 )
 
 MACOS_VIDEO_OPTIONS=(
@@ -162,6 +167,7 @@ MACOS_VIDEO_OPTIONS=(
 IOS_OPTIONS=(
     `# audio output features`
     -Daudiounit=enabled `# AudioUnit output for iOS`
+    # -Davfoundation=enabled `# AVFoundation output for iOS`
 )
 
 IOS_VIDEO_OPTIONS=(

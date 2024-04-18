@@ -1,0 +1,57 @@
+diff --git a/audio/out/ao_coreaudio_chmap.h b/audio/out/ao_coreaudio_chmap.h
+index 0b21e8330c..8dd9ab7001 100644
+--- a/audio/out/ao_coreaudio_chmap.h
++++ b/audio/out/ao_coreaudio_chmap.h
+@@ -21,7 +21,7 @@
+ #include "config.h"
+ #include <AudioToolbox/AudioToolbox.h>
+
+-#if HAVE_AVFOUNDATION || HAVE_AUDIOUNIT
++#if HAVE_AVFOUNDATION
+ #undef HAVE_COREAUDIO
+ #define HAVE_COREAUDIO 1
+ #endif
+diff --git a/audio/out/ao_coreaudio_properties.h b/audio/out/ao_coreaudio_properties.h
+index 2c9c5657bb..07c12400c5 100644
+--- a/audio/out/ao_coreaudio_properties.h
++++ b/audio/out/ao_coreaudio_properties.h
+@@ -23,7 +23,7 @@
+
+ #include "internal.h"
+
+-#if HAVE_AVFOUNDATION || HAVE_AUDIOUNIT
++#if HAVE_AVFOUNDATION
+ #undef HAVE_COREAUDIO
+ #define HAVE_COREAUDIO 1
+ #endif
+diff --git a/audio/out/ao_coreaudio_utils.h b/audio/out/ao_coreaudio_utils.h
+index 699ffde9a7..c199bb70a8 100644
+--- a/audio/out/ao_coreaudio_utils.h
++++ b/audio/out/ao_coreaudio_utils.h
+@@ -29,7 +29,7 @@
+ #include "internal.h"
+ #include "osdep/utils-mac.h"
+
+-#if HAVE_AVFOUNDATION || HAVE_AUDIOUNIT
++#if HAVE_AVFOUNDATION
+ #undef HAVE_COREAUDIO
+ #define HAVE_COREAUDIO 1
+ #endif
+diff --git a/meson.build b/meson.build
+index 2c2246ba23..8dd7251c26 100644
+--- a/meson.build
++++ b/meson.build
+@@ -819,8 +819,11 @@ endif
+
+ if features['audiounit'] or features['coreaudio'] or features['avfoundation']
+     sources += files('audio/out/ao_coreaudio_chmap.c',
+-                     'audio/out/ao_coreaudio_utils.c',
+-                     'audio/out/ao_coreaudio_properties.c')
++                     'audio/out/ao_coreaudio_utils.c')
++endif
++
++if features['avfoundation']
++    sources += files('audio/out/ao_coreaudio_properties.c')
+ endif
+
+ jack_opt = get_option('jack').require(
