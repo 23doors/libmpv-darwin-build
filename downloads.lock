@@ -3,9 +3,9 @@ dav1d:
   url: https://code.videolan.org/videolan/dav1d/-/archive/1.4.1/dav1d-1.4.1.tar.bz2
   sha256: ab02c6c72c69b2b24726251f028b7cb57d5b3659eeec9f67f6cecb2322b127d8
 ffmpeg:
-  version: "7.0"
-  url: https://ffmpeg.org/releases/ffmpeg-7.0.tar.xz
-  sha256: 4426a94dd2c814945456600c8adfc402bee65ec14a70e8c531ec9a2cd651da7b
+  version: 6.1.1
+  url: https://ffmpeg.org/releases/ffmpeg-6.1.1.tar.xz
+  sha256: 8684f4b00f94b85461884c3719382f1261f0d9eb3d59640a1f4ac0873616f968
 fftools-ffi:
   version: "106d5813"
   url: https://github.com/moffatman/fftools-ffi/archive/106d58138071eba66c7d814f6573029c712cd597.tar.gz
@@ -51,9 +51,9 @@ mbedtls:
   url: https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/v3.5.2.tar.gz
   sha256: 35890edf1a2c7a7e29eac3118d43302c3e1173e0df0ebaf5db56126dabe5bb05
 mpv:
-  version: 0.38.0
-  url: https://github.com/mpv-player/mpv/archive/refs/tags/v0.38.0.tar.gz
-  sha256: 86d9ef40b6058732f67b46d0bbda24a074fae860b3eaae05bab3145041303066
+  version: 0.36.0
+  url: https://github.com/mpv-player/mpv/archive/refs/tags/v0.36.0.tar.gz
+  sha256: 29abc44f8ebee013bb2f9fe14d80b30db19b534c679056e4851ceadf5a5e8bf6
 pkg-config:
   version: 0.29.2
   url: https://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz
@@ -62,4 +62,3 @@ uchardet:
   version: 0.0.8
   url: https://www.freedesktop.org/software/uchardet/releases/uchardet-0.0.8.tar.xz
   sha256: e97a60cfc00a1c147a674b097bb1422abd9fa78a2d9ce3f3fdcc2e78a34ac5f0
-

@@ -709,8 +709,9 @@ ${INTERMEDIATE_DIR}/mpv_%: \
 		${INTERMEDIATE_DIR}/harfbuzz_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 		${INTERMEDIATE_DIR}/fribidi_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 		${INTERMEDIATE_DIR}/freetype_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
-		${INTERMEDIATE_DIR}/libplacebo_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 	)
+# TODO: Add above for placebo. Note that mpv 0.37+ results in green h264 on ipad for some reason.
+#		${INTERMEDIATE_DIR}/libplacebo_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 
 	@echo "\033[32mRULE\033[0m $@"
 
@@ -1033,12 +1034,13 @@ ${INTERMEDIATE_DIR}/libs-arch_%: \
 		${INTERMEDIATE_DIR}/harfbuzz_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 		${INTERMEDIATE_DIR}/fribidi_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 		${INTERMEDIATE_DIR}/freetype_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
-		${INTERMEDIATE_DIR}/libplacebo_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 		$$(if $$(filter encodersgpl, $$(word 4,$$(subst -, ,$$*))), \
 			${INTERMEDIATE_DIR}/libvpx_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 			${INTERMEDIATE_DIR}/libx264_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 		) \
 	)
+# TODO: Add above for placebo. Note that mpv 0.37+ results in green h264 on ipad for some reason.
+#		${INTERMEDIATE_DIR}/libplacebo_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 
 	@echo "\033[32mRULE\033[0m $@"
 
