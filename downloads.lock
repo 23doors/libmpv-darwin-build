@@ -1,31 +1,31 @@
 dav1d:
-  version: 1.4.1
-  url: https://code.videolan.org/videolan/dav1d/-/archive/1.4.1/dav1d-1.4.1.tar.bz2
-  sha256: ab02c6c72c69b2b24726251f028b7cb57d5b3659eeec9f67f6cecb2322b127d8
+  version: 1.4.3
+  url: https://code.videolan.org/videolan/dav1d/-/archive/1.4.3/dav1d-1.4.3.tar.bz2
+  sha256: 2a7e68a17b22d1c060d31a7af84c8e033a145fca1d63ef36d57f0f39eb4dd0df
 ffmpeg:
-  version: "7.0"
-  url: https://ffmpeg.org/releases/ffmpeg-7.0.tar.xz
-  sha256: 4426a94dd2c814945456600c8adfc402bee65ec14a70e8c531ec9a2cd651da7b
+  version: 7.0.2
+  url: https://ffmpeg.org/releases/ffmpeg-7.0.2.tar.xz
+  sha256: 8646515b638a3ad303e23af6a3587734447cb8fc0a0c064ecdb8e95c4fd8b389
 fftools-ffi:
   version: "106d5813"
   url: https://github.com/moffatman/fftools-ffi/archive/106d58138071eba66c7d814f6573029c712cd597.tar.gz
   sha256: 4577bb410978f5026270390aa65ebf0307250f3f5b0adf5353e060a5a3f4ee25
 freetype:
-  version: 2.13.2
-  url: https://downloads.sourceforge.net/project/freetype/freetype2/2.13.2/freetype-2.13.2.tar.xz
-  sha256: 12991c4e55c506dd7f9b765933e62fd2be2e06d421505d7950a132e4f1bb484d
+  version: 2.13.3
+  url: https://downloads.sourceforge.net/project/freetype/freetype2/2.13.3/freetype-2.13.3.tar.xz
+  sha256: 0550350666d427c74daeb85d5ac7bb353acba5f76956395995311a9c6f063289
 fribidi:
-  version: 1.0.13
-  url: https://github.com/fribidi/fribidi/releases/download/v1.0.13/fribidi-1.0.13.tar.xz
-  sha256: 7fa16c80c81bd622f7b198d31356da139cc318a63fc7761217af4130903f54a2
+  version: 1.0.15
+  url: https://github.com/fribidi/fribidi/releases/download/v1.0.15/fribidi-1.0.15.tar.xz
+  sha256: 0bbc7ff633bfa208ae32d7e369cf5a7d20d5d2557a0b067c9aa98bcbf9967587
 harfbuzz:
-  version: 8.4.0
-  url: https://github.com/harfbuzz/harfbuzz/archive/refs/tags/8.4.0.tar.gz
-  sha256: 9f1ca089813b05944ad1ce8c7e018213026d35dc9bab480a21eb876838396556
+  version: 9.0.0
+  url: https://github.com/harfbuzz/harfbuzz/archive/refs/tags/9.0.0.tar.gz
+  sha256: b7e481b109d19aefdba31e9f5888aa0cdfbe7608fed9a43494c060ce1f8a34d2
 libass:
-  version: 0.17.1
-  url: https://github.com/libass/libass/releases/download/0.17.1/libass-0.17.1.tar.xz
-  sha256: f0da0bbfba476c16ae3e1cfd862256d30915911f7abaa1b16ce62ee653192784
+  version: 0.17.3
+  url: https://github.com/libass/libass/releases/download/0.17.3/libass-0.17.3.tar.xz
+  sha256: eae425da50f0015c21f7b3a9c7262a910f0218af469e22e2931462fed3c50959
 libogg:
   version: 1.3.5
   url: https://github.com/xiph/ogg/releases/download/v1.3.5/libogg-1.3.5.tar.gz
@@ -43,9 +43,9 @@ libx264:
   url: https://code.videolan.org/videolan/x264/-/archive/a8b68ebfaa68621b5ac8907610d3335971839d52/libx264-a8b68ebfaa68621b5ac8907610d3335971839d52.tar.gz
   sha256: 164688b63f11a6e4f6d945057fc5c57d5eefb97973d0029fb0303744e10839ff
 libxml2:
-  version: 2.12.6
-  url: https://download.gnome.org/sources/libxml2/2.12/libxml2-2.12.6.tar.xz
-  sha256: 889c593a881a3db5fdd96cc9318c87df34eb648edfc458272ad46fd607353fbb
+  version: 2.12.8
+  url: https://download.gnome.org/sources/libxml2/2.12/libxml2-2.12.8.tar.xz
+  sha256: 43ad877b018bc63deb2468d71f95219c2fac196876ef36d1bee51d226173ec93
 mbedtls:
   version: 3.5.2
   url: https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/v3.5.2.tar.gz

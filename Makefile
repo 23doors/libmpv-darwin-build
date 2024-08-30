@@ -582,7 +582,7 @@ ${INTERMEDIATE_DIR}/libplacebo_%: \
 	mkdir -p ${TARGET_TMP_DIR}
 
 	mkdir -p ${TARGET_SRC_DIR}
-	git clone -b v6.338.2 --single-branch https://github.com/haasn/libplacebo.git ${TARGET_SRC_DIR}
+	git clone -b v7.349.0 --single-branch https://github.com/haasn/libplacebo.git ${TARGET_SRC_DIR}
 	# env -i \
 	# 	PATH=${SANDBOX_PATH} \
 	# 	ARCHIVE_FILE=${ARCHIVE_FILE} \
