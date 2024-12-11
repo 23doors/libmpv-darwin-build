@@ -601,6 +601,48 @@ ${INTERMEDIATE_DIR}/libplacebo_%: \
 
 	rm -rf ${TARGET_TMP_DIR}
 
+${INTERMEDIATE_DIR}/vulkan_%: \
+	${DOWNLOADS_DIR} \
+	${PKGCONFIG_DIR}
+
+	$(eval TARGET_DIR=$@)
+	$(eval TARGET_PATTERN=$*)
+	$(eval TARGET_NAME=$(notdir ${TARGET_DIR}))
+	$(eval TARGET_PKGNAME=$(firstword $(subst _${TARGET_PATTERN}, ,${TARGET_NAME})))
+	$(eval TARGET_TMP_DIR=${TMP_DIR}/${TARGET_NAME})
+	$(eval TARGET_SRC_DIR=${TARGET_TMP_DIR}/src/${TARGET_PKGNAME})
+	$(eval TARGET_OUTPUT_DIR=${PROJECT_DIR}/${TARGET_DIR})
+
+	$(eval ARCHIVE_FILE=$(firstword $(wildcard ${DOWNLOADS_DIR}/${TARGET_PKGNAME}-*.tar.*)))
+
+	$(eval TARGET_OS=$(word 1, $(subst -, ,${TARGET_PATTERN})))
+	$(eval TARGET_ARCH=$(word 2, $(subst -, ,${TARGET_PATTERN})))
+
+	$(eval TARGET_PKGS_DEPS=$(foreach DEP,${TARGET_DEPS}, \
+		$(if $(findstring downloads,${DEP}),, \
+			$(if $(findstring pkg-config,${DEP}),, \
+				${DEP}))))
+	$(eval PKG_CONFIG_PATH_LIST=$(foreach DEP,${TARGET_PKGS_DEPS},${PROJECT_DIR}/${DEP}/lib/pkgconfig))
+	$(eval PKG_CONFIG_PATH=$(subst ${SPACE},${COLON},${PKG_CONFIG_PATH_LIST}))
+
+	rm -rf ${TARGET_TMP_DIR} ${TARGET_DIR}
+	mkdir -p ${TARGET_TMP_DIR}
+
+	mkdir -p ${TARGET_SRC_DIR}/subprojects/${TARGET_PKGNAME}
+	git clone --single-branch https://github.com/KhronosGroup/Vulkan-Loader.git ${TARGET_SRC_DIR}/subprojects/${TARGET_PKGNAME}
+
+	env -i \
+		PATH=${SANDBOX_PATH} \
+		PROJECT_DIR=${PROJECT_DIR} \
+		PKG_CONFIG_PATH=${PKG_CONFIG_PATH} \
+		OS=${TARGET_OS} \
+		ARCH=${TARGET_ARCH} \
+		SRC_DIR=${TARGET_SRC_DIR} \
+		OUTPUT_DIR=${TARGET_OUTPUT_DIR} \
+		sh ${PROJECT_DIR}/scripts/${TARGET_PKGNAME}/build.sh
+
+	rm -rf ${TARGET_TMP_DIR}
+
 # libass_<os>-<arch>
 ${INTERMEDIATE_DIR}/libass_%: \
 	${DOWNLOADS_DIR} \
@@ -710,6 +752,7 @@ ${INTERMEDIATE_DIR}/mpv_%: \
 		${INTERMEDIATE_DIR}/fribidi_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 		${INTERMEDIATE_DIR}/freetype_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 		${INTERMEDIATE_DIR}/libplacebo_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
+		${INTERMEDIATE_DIR}/vulkan_$$(word 1,$$(subst -, ,$$*))-$$(word 2,$$(subst -, ,$$*)) \
 	)
 
 	@echo "\033[32mRULE\033[0m $@"
