@@ -9,6 +9,6 @@ git submodule update --init
 meson setup build \
     --cross-file ${PROJECT_DIR}/cross-files/${OS}-${ARCH}.ini \
     --prefix="${OUTPUT_DIR}" \
-    -Dvulkan=disabled -Ddemos=false
+    -Dvulkan=enabled -Ddemos=false
 meson compile -C build
 meson install -C build
