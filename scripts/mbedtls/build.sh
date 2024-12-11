@@ -3,6 +3,9 @@
 set -e # exit immediately if a command exits with a non-zero status
 set -u # treat unset variables as an error
 
+# cmake weird fix
+export PATH="/opt/homebrew/bin:$PATH"
+
 cd ${SRC_DIR}
 
 # cross build with meson
