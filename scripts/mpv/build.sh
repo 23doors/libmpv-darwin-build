@@ -5,7 +5,6 @@ set -u # treat unset variables as an error
 
 cd ${SRC_DIR}
 
-patch -p1 <${PROJECT_DIR}/patches/mpv-ios-build.patch
 if [ "${VARIANT}" == "audio" ]; then
     patch -p1 <${PROJECT_DIR}/patches/mpv-remove-libass.patch
 fi
