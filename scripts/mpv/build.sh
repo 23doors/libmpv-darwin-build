@@ -9,6 +9,8 @@ if [ "${VARIANT}" == "audio" ]; then
     patch -p1 <${PROJECT_DIR}/patches/mpv-remove-libass.patch
 fi
 
+patch -p1 <${PROJECT_DIR}/patches/mpvkit-0001-player-add-moltenvk-context.patch
+
 DISABLE_ALL_OPTIONS=(
     `# booleans`
     -Dgpl=false `# GPL (version 2 or later) build`
@@ -144,6 +146,7 @@ COMMON_VIDEO_OPTIONS=(
     `# video output features`
     -Dgl=enabled `# OpenGL context support`
     -Dplain-gl=enabled `# OpenGL without platform-specific code (e.g. for libmpv)`
+    -Dmoltenvk=enabled `# from patch option`
 )
 
 MACOS_OPTIONS=(
